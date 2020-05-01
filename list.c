@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include "list.h"
 
@@ -37,12 +38,7 @@ Status insert_initital_node(List_ptr list,Node_ptr new_node){
   return Success;
 }
 
-Status insert_at(List_ptr list, int value, int position){
-  Node_ptr new_node = create_node(value);
-  
-  if(list->head == NULL ) return insert_initital_node(list,new_node);
-  if( position == 0 ) return insert_at_start( list, new_node);
-
+Node_ptr get_node( List_ptr list, int position){
   Node_ptr p_walk = list->head;
   int currPosition = 1;
   while ( currPosition != position)
@@ -50,17 +46,37 @@ Status insert_at(List_ptr list, int value, int position){
     p_walk = p_walk->next;
     currPosition++;
   }
+  return p_walk;
+}
+
+Status insert_at(List_ptr list, int value, int position){
+  Node_ptr new_node = create_node(value);
   
+  if(list->head == NULL ) return insert_initital_node(list,new_node);
+  if( position == 0 ) return insert_at_start( list, new_node);
+  
+  Node_ptr p_walk = get_node(list, position);
   p_walk->next =  new_node;
   if( position == list->count) list->last = new_node;
-  else
-  {
+  else {
     Node_ptr pre_pos = p_walk->next;
     new_node->next = pre_pos;  
   }
   list->count++;
   return Success;
 }
+
+void display(List_ptr list){
+  printf("The list is \n");
+  Node *p_walk = list->head;
+  int count = 0;
+  while (p_walk != NULL)
+  {
+    printf("%d\n",p_walk->value);
+    p_walk = p_walk->next;
+  }
+}
+
 
 List_ptr create_list(){
   List_ptr list = malloc(sizeof(List));

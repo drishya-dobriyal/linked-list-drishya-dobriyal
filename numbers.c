@@ -27,16 +27,23 @@ int main(void) {
   ch = getchar();
 
   while( ch != 'm'){
+
     if( ch == 'a' ) {
       printf("Enter number:\n");
       scanf("%d", &value);
       printf("%d\n",add_to_end(list, value));
     }
+
     if( ch == 'b' ) {
       printf("Enter number:\n");
       scanf("%d", &value);
       printf("%d\n",add_to_start(list, value));
     }
+
+    if( ch == 'l' ) {
+      display(list);
+    }
+
     while(getchar() != '\n');
     ch = getchar();
   }
