@@ -52,6 +52,12 @@ int main(void) {
       printf("%d\n",add_unique(list, value));
     }
     
+    if( ch == 'k'){
+      printf("Enter number:\n");
+      scanf("%d", &value);
+      printf("%s\n",is_value_present(list, value) == 1 ? "Present" : "Not Present");
+    }
+
     if( ch == 'l' ) {
       display(list);
     }
