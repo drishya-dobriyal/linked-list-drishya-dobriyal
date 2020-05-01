@@ -28,7 +28,6 @@ Status add_to_start( List_ptr list, int value) {
 
 Status add_unique(List_ptr list, int value){
   if(is_value_present(list, value)) return Failure;
-  printf("after");
   insert_at(list,value,list->count);
   return Success;
 }

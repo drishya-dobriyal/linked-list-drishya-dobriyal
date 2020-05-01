@@ -55,7 +55,7 @@ int main(void) {
     if( ch == 'k'){
       printf("Enter number:\n");
       scanf("%d", &value);
-      printf("%s\n",is_value_present(list, value) == 1 ? "Present" : "Not Present");
+      printf("%s\n",is_value_present(list, value) == Success ? "Present" : "Not Present");
     }
 
     if( ch == 'l' ) {
