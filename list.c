@@ -2,6 +2,22 @@
 #include <stdlib.h>
 #include "list.h"
 
+
+Node_ptr create_node( int value){
+  Node_ptr new_node = malloc(sizeof(Node));
+  new_node->next = NULL;
+  new_node->value = value;
+  return new_node;
+}
+
+List_ptr create_list(){
+  List_ptr list = malloc(sizeof(List));
+  list->head = NULL;
+  list->last = NULL;
+  list->count = 0;
+  return list;
+}
+
 Status is_value_present(List_ptr list,int value) {
   Node_ptr p_walk = list->head;
   while (p_walk != NULL)
@@ -10,6 +26,44 @@ Status is_value_present(List_ptr list,int value) {
     p_walk = p_walk->next;
   }
   return Failure;
+}
+
+void display(List_ptr list){
+  printf("The list is \n");
+  Node *p_walk = list->head;
+  int count = 0;
+  while (p_walk != NULL)
+  {
+    printf("%d\n",p_walk->value);
+    p_walk = p_walk->next;
+  }
+}
+
+Status clear_list(List_ptr list) {
+  Node_ptr p_walk = list->head;
+  Node_ptr eliminate_ptr = NULL;
+  while (p_walk != NULL)
+  {
+    eliminate_ptr = p_walk;
+    p_walk = p_walk->next;
+    free(eliminate_ptr);
+  }
+  list->head = NULL;
+  list->last = NULL;
+  list->count = 0;
+  return Success;
+}
+
+void destroy_list(List_ptr list){
+  Node_ptr p_walk = list->head;
+  Node_ptr eliminate_ptr = NULL;
+  while (p_walk != NULL)
+  {
+    eliminate_ptr = p_walk;
+    p_walk = p_walk->next;
+    free(eliminate_ptr);
+  }
+  free(list);
 }
 
 Status add_to_end( List_ptr list, int value) {
@@ -70,30 +124,4 @@ Status insert_at(List_ptr list, int value, int position){
   else new_node->next = pre_pos;   
   list->count++;
   return Success;
-}
-
-void display(List_ptr list){
-  printf("The list is \n");
-  Node *p_walk = list->head;
-  int count = 0;
-  while (p_walk != NULL)
-  {
-    printf("%d\n",p_walk->value);
-    p_walk = p_walk->next;
-  }
-}
-
-Node_ptr create_node( int value){
-  Node_ptr new_node = malloc(sizeof(Node));
-  new_node->next = NULL;
-  new_node->value = value;
-  return new_node;
-}
-
-List_ptr create_list(){
-  List_ptr list = malloc(sizeof(List));
-  list->head = NULL;
-  list->last = NULL;
-  list->count = 0;
-  return list;
 }

@@ -27,43 +27,65 @@ int main(void) {
   ch = getchar();
 
   while( ch != 'm'){
-
-    if( ch == 'a' ) {
+    switch (ch)
+    {
+    case 'a':
       printf("Enter number:\n");
       scanf("%d", &value);
       printf("%d\n",add_to_end(list, value));
-    }
-
-    if( ch == 'b' ) {
+      break;
+    
+    case 'b' : 
       printf("Enter number:\n");
       scanf("%d", &value);
       printf("%d\n",add_to_start(list, value));
-    }
+      break;
 
-    if( ch == 'c' ) {
+    case 'c' : 
       printf("Enter number and position:\n");
       scanf("%d %d", &value, &position);
       printf("%d\n",insert_at(list, value, position - 1));
-    }
+      break;
 
-    if( ch == 'd'){
+    case 'd' :
       printf("Enter number:\n");
       scanf("%d", &value);
       printf("%d\n",add_unique(list, value));
-    }
+      break;
     
-    if( ch == 'k'){
-      printf("Enter number:\n");
-      scanf("%d", &value);
-      printf("%s\n",is_value_present(list, value) == Success ? "Present" : "Not Present");
-    }
+    case 'e' :
+      break;
+    
+    case 'f' :
+      break;
 
-    if( ch == 'l' ) {
+    case 'g' :
+      break;
+
+    case 'h' :
+      break;
+
+    case 'i' :
+      break;
+
+    case 'j' :
+      printf("%d\n",clear_list(list));
+      break;
+
+    case 'k' :
+      printf("Enter number:\n");
+      scanf("%d\n", &value);
+      printf("%s\n",is_value_present(list, value) == Success ? "Present" : "Not Present");
+      break;
+
+    case 'l' : 
       display(list);
-    }
+      break;
+    }  
 
     while(getchar() != '\n');
     ch = getchar();
   }
+  destroy_list(list);
   return 0;
 }
