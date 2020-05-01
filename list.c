@@ -68,20 +68,17 @@ void destroy_list(List_ptr list){
 
 Status add_to_end( List_ptr list, int value) {
   int count = list->count;
-  insert_at(list, value, count);
-  if( count + 1 == list->count) return Success;
-  return Failure;
+  return insert_at(list, value, count);
 }
 
 Status add_to_start( List_ptr list, int value) {
   int count = list->count;
-  insert_at(list, value, 0);
-  if( count + 1 == list->count) return Success;
-  return Failure;
+  return insert_at(list, value, 0);
 }
 
 Status add_unique(List_ptr list, int value){
-  if(is_value_present(list, value)) return Failure;
+  if(is_value_present(list, value))
+   return Success;
   insert_at(list,value,list->count);
   return Success;
 }
@@ -113,9 +110,11 @@ Node_ptr get_node( List_ptr list, int position){
 }
 
 Status insert_at(List_ptr list, int value, int position){
+  if( position > list->count || position < 0) return Failure;
+  
   Node_ptr new_node = create_node(value);
   if(list->head == NULL ) return insert_initital_node(list,new_node);
-  if( position <= 0) return insert_at_start( list, new_node);
+  if( position == 0) return insert_at_start( list, new_node);
   
   Node_ptr p_walk = get_node(list, position);
   Node_ptr pre_pos = p_walk->next;

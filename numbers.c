@@ -19,6 +19,11 @@ void display_menu() {
   printf("Please enter the alphabet of the operation you would like to perform\n"); 
 }
 
+void print_status(int value){
+  if( value == 1) printf("SuccessFully done\n");
+  else printf("Failed\n");
+}
+
 int main(void) {
   char ch;
   int value, position;
@@ -32,25 +37,25 @@ int main(void) {
     case 'a':
       printf("Enter number:\n");
       scanf("%d", &value);
-      printf("%d\n",add_to_end(list, value));
+      print_status(add_to_end(list, value));
       break;
     
     case 'b' : 
       printf("Enter number:\n");
       scanf("%d", &value);
-      printf("%d\n",add_to_start(list, value));
+      print_status(add_to_start(list, value));
       break;
 
     case 'c' : 
       printf("Enter number and position:\n");
       scanf("%d %d", &value, &position);
-      printf("%d\n",insert_at(list, value, position - 1));
+      print_status(insert_at(list, value, position - 1));
       break;
 
     case 'd' :
       printf("Enter number:\n");
       scanf("%d", &value);
-      printf("%d\n",add_unique(list, value));
+      print_status(add_unique(list, value));
       break;
     
     case 'e' :
@@ -69,12 +74,12 @@ int main(void) {
       break;
 
     case 'j' :
-      printf("%d\n",clear_list(list));
+      print_status(clear_list(list));
       break;
 
     case 'k' :
       printf("Enter number:\n");
-      scanf("%d\n", &value);
+      scanf("%d", &value);
       printf("%s\n",is_value_present(list, value) == Success ? "Present" : "Not Present");
       break;
 
