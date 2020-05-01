@@ -38,24 +38,28 @@ int main(void) {
       printf("Enter number:\n");
       scanf("%d", &value);
       print_status(add_to_end(list, value));
+      display_menu();
       break;
     
     case 'b' : 
       printf("Enter number:\n");
       scanf("%d", &value);
       print_status(add_to_start(list, value));
+      display_menu();
       break;
 
     case 'c' : 
       printf("Enter number and position:\n");
       scanf("%d %d", &value, &position);
       print_status(insert_at(list, value, position - 1));
+      display_menu();
       break;
 
     case 'd' :
       printf("Enter number:\n");
       scanf("%d", &value);
       print_status(add_unique(list, value));
+      display_menu();
       break;
     
     case 'e' :
@@ -75,16 +79,19 @@ int main(void) {
 
     case 'j' :
       print_status(clear_list(list));
+      display_menu();
       break;
 
     case 'k' :
       printf("Enter number:\n");
       scanf("%d", &value);
       printf("%s\n",is_value_present(list, value) == Success ? "Present" : "Not Present");
+      display_menu();
       break;
 
     case 'l' : 
       display(list);
+      display_menu();
       break;
     }  
 
