@@ -124,3 +124,10 @@ Status insert_at(List_ptr list, int value, int position){
   list->count++;
   return Success;
 }
+
+Status remove_from_start(List_ptr list) {
+  Node_ptr new_head = list->head->next;
+  free(list->head);
+  list->head = new_head;
+  return Success;
+}

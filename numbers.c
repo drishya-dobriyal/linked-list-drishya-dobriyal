@@ -63,6 +63,8 @@ int main(void) {
       break;
     
     case 'e' :
+      print_status(remove_from_start(list));
+      display_menu();
       break;
     
     case 'f' :
