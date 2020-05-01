@@ -2,6 +2,16 @@
 #include <stdlib.h>
 #include "list.h"
 
+Status is_value_present(List_ptr list,int value) {
+  Node_ptr p_walk = list->head;
+  while (p_walk != NULL)
+  {
+    if(p_walk->value == value) return Success;
+    p_walk = p_walk->next;
+  }
+  return Failure;
+}
+
 Status add_to_end( List_ptr list, int value) {
   int count = list->count;
   insert_at(list, value, count);
@@ -16,11 +26,11 @@ Status add_to_start( List_ptr list, int value) {
   return Failure;
 }
 
-Node_ptr create_node( int value){
-  Node_ptr new_node = malloc(sizeof(Node));
-  new_node->next = NULL;
-  new_node->value = value;
-  return new_node;
+Status add_unique(List_ptr list, int value){
+  if(is_value_present(list, value)) return Failure;
+  printf("after");
+  insert_at(list,value,list->count);
+  return Success;
 }
 
 Status insert_at_start(List_ptr list,Node_ptr new_node){
@@ -51,17 +61,14 @@ Node_ptr get_node( List_ptr list, int position){
 
 Status insert_at(List_ptr list, int value, int position){
   Node_ptr new_node = create_node(value);
-  
   if(list->head == NULL ) return insert_initital_node(list,new_node);
-  if( position == 0 ) return insert_at_start( list, new_node);
+  if( position <= 0) return insert_at_start( list, new_node);
   
   Node_ptr p_walk = get_node(list, position);
+  Node_ptr pre_pos = p_walk->next;
   p_walk->next =  new_node;
   if( position == list->count) list->last = new_node;
-  else {
-    Node_ptr pre_pos = p_walk->next;
-    new_node->next = pre_pos;  
-  }
+  else new_node->next = pre_pos;   
   list->count++;
   return Success;
 }
@@ -77,6 +84,12 @@ void display(List_ptr list){
   }
 }
 
+Node_ptr create_node( int value){
+  Node_ptr new_node = malloc(sizeof(Node));
+  new_node->next = NULL;
+  new_node->value = value;
+  return new_node;
+}
 
 List_ptr create_list(){
   List_ptr list = malloc(sizeof(List));

@@ -21,7 +21,7 @@ void display_menu() {
 
 int main(void) {
   char ch;
-  int value;
+  int value, position;
   List_ptr list = create_list();
   display_menu();
   ch = getchar();
@@ -40,6 +40,18 @@ int main(void) {
       printf("%d\n",add_to_start(list, value));
     }
 
+    if( ch == 'c' ) {
+      printf("Enter number and position:\n");
+      scanf("%d %d", &value, &position);
+      printf("%d\n",insert_at(list, value, position - 1));
+    }
+
+    if( ch == 'd'){
+      printf("Enter number:\n");
+      scanf("%d", &value);
+      printf("%d\n",add_unique(list, value));
+    }
+    
     if( ch == 'l' ) {
       display(list);
     }
