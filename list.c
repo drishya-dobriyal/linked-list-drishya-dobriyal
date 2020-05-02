@@ -173,9 +173,7 @@ Status remove_first_occurrence(List_ptr list, int value){
 }
 
 Status remove_all_occurrences(List_ptr list, int value){
-  while (is_value_present( list ,value))
-  {
-   remove_value(list,value);
-  }
-  return Success;
+  if( is_value_present( list ,value) == 0) return Success;
+  remove_value(list,value);
+  return remove_all_occurrences( list, value);
 }
