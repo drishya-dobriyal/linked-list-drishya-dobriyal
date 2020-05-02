@@ -78,7 +78,7 @@ int main(void) {
       print_status(remove_at(list, position));
       display_menu();
       break;
-
+      
     case 'h' :
       break;
 
