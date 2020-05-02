@@ -154,8 +154,7 @@ Status remove_at(List_ptr list, int position){
   return Success;
 }
 
-Status remove_value(List_ptr list, int value){
-  if(is_value_present( list ,value) == 0) return Failure;
+Status remove_first_occurrence(List_ptr list, int value){
   Node_ptr p_walk = list->head;
   int pos = 1;
   while (p_walk != NULL)
@@ -167,13 +166,8 @@ Status remove_value(List_ptr list, int value){
   return Failure;
 }
 
-Status remove_first_occurrence(List_ptr list, int value){
-  remove_value(list,value);
-  return Success;
-}
-
 Status remove_all_occurrences(List_ptr list, int value){
   if( is_value_present( list ,value) == 0) return Success;
-  remove_value(list,value);
+  remove_first_occurrence(list,value);
   return remove_all_occurrences( list, value);
 }
