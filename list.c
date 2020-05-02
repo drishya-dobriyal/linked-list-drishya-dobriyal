@@ -169,8 +169,6 @@ Status remove_first_occurrence(List_ptr list, int value){
 Status remove_all_occurrences(List_ptr list, int value){
   if( is_value_present( list ,value) == 0) return Failure;
   while(is_value_present(list ,value) == 1) {
-    printf("inside");
-    display(list);
     remove_first_occurrence(list, value);
   }
   return Success;
