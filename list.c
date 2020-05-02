@@ -167,7 +167,7 @@ Status remove_first_occurrence(List_ptr list, int value){
 }
 
 Status remove_all_occurrences(List_ptr list, int value){
-  int status = is_value_present( list ,value);
+  Status status = is_value_present( list ,value);
   if( status == 0) return Failure;
   while( status == 1) {
     status = remove_first_occurrence(list, value);
