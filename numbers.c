@@ -98,6 +98,7 @@ int main(void) {
       display(list);
       break;
     }  
+    
     display_menu();
     while(getchar() != '\n');
     ch = getchar();
