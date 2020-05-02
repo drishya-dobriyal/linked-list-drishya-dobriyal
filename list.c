@@ -67,6 +67,7 @@ void destroy_list(List_ptr list){
 }
 
 Status add_to_end( List_ptr list, int value) {
+  int count = list->count;
   return insert_at(list, value, count);
 }
 
