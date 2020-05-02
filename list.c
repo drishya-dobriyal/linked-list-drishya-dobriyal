@@ -72,7 +72,6 @@ Status add_to_end( List_ptr list, int value) {
 }
 
 Status add_to_start( List_ptr list, int value) {
-  int count = list->count;
   return insert_at(list, value, 0);
 }
 
@@ -152,5 +151,31 @@ Status remove_at(List_ptr list, int position){
   };   
   list->count--;
   free(elimate_node);
+  return Success;
+}
+
+Status remove_value(List_ptr list, int value){
+  if(is_value_present( list ,value) == 0) return Failure;
+  Node_ptr p_walk = list->head;
+  int pos = 1;
+  while (p_walk != NULL)
+  {
+    if(p_walk->value == value) return remove_at(list, pos);
+    p_walk = p_walk->next;
+    pos++;
+  }
+  return Failure;
+}
+
+Status remove_first_occurrence(List_ptr list, int value){
+  remove_value(list,value);
+  return Success;
+}
+
+Status remove_all_occurrences(List_ptr list, int value){
+  while (is_value_present( list ,value))
+  {
+   remove_value(list,value);
+  }
   return Success;
 }

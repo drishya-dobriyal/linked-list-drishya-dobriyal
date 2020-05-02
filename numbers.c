@@ -78,11 +78,19 @@ int main(void) {
       print_status(remove_at(list, position));
       display_menu();
       break;
-      
+
     case 'h' :
+      printf("Enter number:\n");
+      scanf("%d", &value);
+      print_status(remove_first_occurrence(list, value));
+      display_menu();
       break;
 
     case 'i' :
+      printf("Enter number:\n");
+      scanf("%d", &value);
+      print_status(remove_all_occurrences(list, value));
+      display_menu();
       break;
 
     case 'j' :
