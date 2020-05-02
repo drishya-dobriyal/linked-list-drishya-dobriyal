@@ -76,10 +76,8 @@ Status add_to_start( List_ptr list, int value) {
 }
 
 Status add_unique(List_ptr list, int value){
-  if(is_value_present(list, value))
-   return Success;
-  insert_at(list,value,list->count);
-  return Success;
+  if(is_value_present(list, value)) return Failure;
+  return insert_at(list,value,list->count);
 }
 
 Status insert_at_start(List_ptr list,Node_ptr new_node){
@@ -160,7 +158,6 @@ Status remove_first_occurrence(List_ptr list, int value){
   while (p_walk != NULL)
   {
     if(p_walk->value == value) {
-      list->count--;
       return remove_at(list, pos);
     };
     p_walk = p_walk->next;
@@ -171,7 +168,9 @@ Status remove_first_occurrence(List_ptr list, int value){
 
 Status remove_all_occurrences(List_ptr list, int value){
   if( is_value_present( list ,value) == 0) return Failure;
-  while( is_value_present( list ,value)  ==  1){
+  while(is_value_present(list ,value) == 1) {
+    printf("inside");
+    display(list);
     remove_first_occurrence(list, value);
   }
   return Success;
