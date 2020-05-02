@@ -68,9 +68,13 @@ int main(void) {
       break;
     
     case 'f' :
+      print_status(remove_from_end(list));
+      display_menu();
       break;
 
     case 'g' :
+      print_status(remove_from_end(list));
+      display_menu();
       break;
 
     case 'h' :
@@ -93,7 +97,7 @@ int main(void) {
 
     case 'l' : 
       display(list);
-      display_menu();
+      // display_menu();
       break;
     }  
 
