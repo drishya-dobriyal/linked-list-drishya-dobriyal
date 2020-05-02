@@ -73,7 +73,9 @@ int main(void) {
       break;
 
     case 'g' :
-      print_status(remove_from_end(list));
+      printf("Enter position:\n");
+      scanf("%d",&position);
+      print_status(remove_at(list, position));
       display_menu();
       break;
 

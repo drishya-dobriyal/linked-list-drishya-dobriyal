@@ -139,10 +139,15 @@ Status remove_from_end(List_ptr list){
  
 Status remove_at(List_ptr list, int position){
   if( position > list->count || position < 0) return Failure;
+  
   if( position == 0) return remove_from_start( list );
+  
   Node_ptr pre_node = get_node(list, position - 1);
   Node_ptr elimate_node = pre_node->next;
-  if( position == list->count) list->last = pre_node;
+  if( position == list->count) {
+    list->last = pre_node;
+    list->last->next = NULL;
+  }
   else {
     pre_node->next = elimate_node->next;
   };   
