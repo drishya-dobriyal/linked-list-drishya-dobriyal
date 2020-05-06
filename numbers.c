@@ -49,7 +49,7 @@ int main(void) {
     case 'c' : 
       printf("Enter number and position:\n");
       scanf("%d %d", &value, &position);
-      print_status(insert_at(list, value, position - 1));
+      print_status(insert_at(list, value, position ));
       break;
 
     case 'd' :
@@ -69,7 +69,7 @@ int main(void) {
     case 'g' :
       printf("Enter position:\n");
       scanf("%d",&position);
-      print_status(remove_at(list, position));
+      print_status(remove_at(list, position ));
       break;
 
     case 'h' :
@@ -99,7 +99,7 @@ int main(void) {
       break;
     }  
     
-    display_menu();
+    // display_menu();
     while(getchar() != '\n');
     ch = getchar();
   }
