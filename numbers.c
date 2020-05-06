@@ -99,7 +99,7 @@ int main(void) {
       break;
     }  
     
-    // display_menu();
+    display_menu();
     while(getchar() != '\n');
     ch = getchar();
   }
